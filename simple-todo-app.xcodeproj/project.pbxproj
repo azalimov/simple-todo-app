@@ -12,7 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D596ED162DCE090C00503DE0 /* simple-todo-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "simple-todo-app.app"; path = "/Users/retq/Desktop/Projects/simple-todo-app/build/Debug/simple-todo-app.app"; sourceTree = "<absolute>"; };
+		D5C6733A2DD20ACF00E28EA7 /* simple-todo-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "simple-todo-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				D596ED182DCE090C00503DE0 /* simple-todo-app */,
+				D5C6733A2DD20ACF00E28EA7 /* simple-todo-app.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,7 +68,7 @@
 				D596ED312DCE13AF00503DE0 /* FirebaseFirestore */,
 			);
 			productName = "simple-todo-app";
-			productReference = D596ED162DCE090C00503DE0 /* simple-todo-app.app */;
+			productReference = D5C6733A2DD20ACF00E28EA7 /* simple-todo-app.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

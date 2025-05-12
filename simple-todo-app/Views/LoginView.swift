@@ -8,47 +8,69 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject var viewModel = LoginViewModel()
     
-    @State var email = ""
-    @State var password = ""
     var body: some View {
-        VStack{
-            LoginHeaderView()
-            
+        NavigationView {
             VStack{
-                TextField("Email Address", text: $email)
-                    .padding(.top, 15)
-                SecureField("Password", text: $password)
-                    .padding(.bottom, 15)
-                
-                Button(action: {
-                    //TODO: Implement login logic
-                })
-                {
-                    ZStack{
-                        RoundedRectangle(cornerRadius:  10).foregroundStyle(.blue)
-                        Text("Log in")
-                            .foregroundStyle(.white)
-                            .bold()
+                RotatedBackgroundHeaderView(
+                    title: "TO DO List",
+                    subtitle: "Get things done",
+                    rotationDegree: 15,
+                    backgroundColor: .pink
+                )
+                VStack(
+                    alignment: .leading,
+                    spacing: 0
+                ) {
+                    TextField("Email Address", text: $viewModel.email)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    SecureField("Password", text: $viewModel.password)
+                        .keyboardType(.default)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                    
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundStyle(.red)
+                            .font(.system(size: 14))
+                        
                     }
-                }.frame(maxHeight: 40)
-
+                    
+                    Button(action: viewModel.login)
+                    {
+                        ZStack{
+                            RoundedRectangle(cornerRadius:  10)
+                                .foregroundStyle(.blue)
+                            Text("Log in")
+                                .foregroundStyle(.white)
+                                .bold()
+                        }
+                    }
+                    .frame(maxHeight: 40)
+                    .padding(.top, 15)
+                    
+                    
+                }
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.all, 20)
+                .background(
+                    Rectangle()
+                        .foregroundStyle(.secondary.opacity(0.2))
+                        .cornerRadius(20)
+                )
+                .padding(.all,20)
+                .offset(y: -50)
+                
+                
+                Spacer()
+                VStack{
+                    Text("New around here?")
+                    NavigationLink("Create an account", destination: SignUpView())
+                }.padding(.bottom, 50)
             }
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding(.all, 20)
-            .background(
-                Rectangle()
-                .foregroundStyle(.secondary.opacity(0.2))
-                .cornerRadius(20)
-               )
-            .padding(.all,20)
-
-            
-            Spacer()
-            VStack{
-                Text("New around here?")
-                NavigationLink("Create an accont", destination: SignUpView())
-            }.padding(.bottom, 50)
         }
     }
 }

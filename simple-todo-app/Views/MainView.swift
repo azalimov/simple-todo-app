@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var viewModel = MainViewModel()
     var body: some View {
-        NavigationView{
+        if viewModel.isSignedIn, !viewModel.currenctUserId.isEmpty {
+            TabView{
+                HomeView()
+                    .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+                ProfileView()
+                    .tabItem {
+                    Label("Profile", systemImage: "person.circle")
+                }
+            }
+        } else {
             LoginView()
         }
     }
